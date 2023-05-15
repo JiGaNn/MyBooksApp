@@ -7,23 +7,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.mybooksapp.databinding.FragmentDetailBinding
-
 class DetailFragment : Fragment() {
 
-    lateinit var binding: FragmentDetailBinding
+    private lateinit var binding: FragmentDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentDetailBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-//        binding.root.onKeyDown(KeyEvent.KEYCODE_BACK, KeyEvent.changeAction())
 
         val bookID = arguments?.getInt("bookID")
         val book = bookFromID(bookID!!)
@@ -41,5 +38,16 @@ class DetailFragment : Fragment() {
                 return book
         }
         return null
+    }
+    override fun onResume() {
+        super.onResume()
+        requireView().isFocusableInTouchMode = true
+        requireView().requestFocus()
+        requireView().setOnKeyListener { _, keyCode, _ ->
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
+                MAIN.navController.popBackStack()
+                true
+            } else false
+        }
     }
 }

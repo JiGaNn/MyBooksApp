@@ -1,30 +1,32 @@
 package com.example.mybooksapp
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.mybooksapp.databinding.FragmentMainBinding
 
 class MainFragment : Fragment(), BookClickListener {
 
-    lateinit var binding: FragmentMainBinding
+    private lateinit var binding: FragmentMainBinding
+    private var amm = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentMainBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        populateBooks()
-
+        if (amm) {
+            populateBooks()
+            amm = false
+        }
         val main = this
 
         binding.recyclerView.apply {
@@ -32,7 +34,6 @@ class MainFragment : Fragment(), BookClickListener {
             adapter = CardAdapter(bookList, main)
         }
     }
-
     private fun populateBooks() {
 
         val book1 = Book(
