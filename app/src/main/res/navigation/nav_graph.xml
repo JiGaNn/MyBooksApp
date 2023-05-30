@@ -7,19 +7,31 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.mybooksapp.MainFragment"
+        android:name="com.example.mybooksapp.fragments.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/action_mainFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_dbFragment"
+            app:destination="@id/dbFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.example.mybooksapp.DetailFragment"
+        android:name="com.example.mybooksapp.fragments.DetailFragment"
         android:label="DetailFragment" >
         <argument
             android:name="bookID"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/dbFragment"
+        android:name="com.example.mybooksapp.fragments.DbFragment"
+        android:label="fragment_db"
+        tools:layout="@layout/fragment_db" >
+        <action
+            android:id="@+id/action_dbFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
 </navigation>

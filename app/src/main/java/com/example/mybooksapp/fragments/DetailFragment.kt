@@ -1,4 +1,4 @@
-package com.example.mybooksapp
+package com.example.mybooksapp.fragments
 
 import android.os.Bundle
 import android.view.KeyEvent
@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.mybooksapp.db.Book
+import com.example.mybooksapp.MAIN
+import com.example.mybooksapp.db.bookList
 import com.example.mybooksapp.databinding.FragmentDetailBinding
 class DetailFragment : Fragment() {
 
@@ -34,7 +37,7 @@ class DetailFragment : Fragment() {
 
     private fun bookFromID(bookID: Int): Book? {
         for(book in bookList) {
-            if(book.id == bookID)
+            if(book.listId == bookID)
                 return book
         }
         return null

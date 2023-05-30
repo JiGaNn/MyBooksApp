@@ -3,19 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MainFragment">
+    tools:context=".fragments.DbFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/dbRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-    <ImageButton
-        android:id="@+id/btnLikes"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/likes"
-        android:scaleType="centerCrop"
-        android:background="#0000" />
 
 </FrameLayout>
